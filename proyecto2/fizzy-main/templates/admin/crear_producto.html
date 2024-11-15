@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Crear Producto</title>
+</head>
+
+<body>
+    <h1>Crear nuevo producto</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- Esto renderiza todos los campos del formulario del producto -->
+        <button type="submit">Guardar</button>
+    </form>
+    <a href="{% url 'gestion_productos' %}">Volver a la gestión de productos</a>
+</body>
+
+</html>

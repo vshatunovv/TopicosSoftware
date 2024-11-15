@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Productos Aliados</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Productos de Aliados</h1>
+
+        <div class="row">
+            {% for producto in productos_aliados %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ producto.name }}</h5>
+                        <p class="card-text">{{ producto.description }}</p>
+                        <p class="card-text"><strong>Precio:</strong> ${{ producto.price }}</p>
+                        <p class="card-text"><strong>Stock:</strong> {{ producto.stock }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p class="text-center">No hay productos disponibles.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<!-- templates/admin/editar_producto.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Editar Producto</title>
+</head>
+
+<body>
+    <h1>Editar producto: {{ form.instance.name }}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }} <!-- Renderiza todos los campos del formulario de edición -->
+        <button type="submit">Guardar cambios</button>
+    </form>
+    <a href="{% url 'gestion_productos' %}">Volver a la gestión de productos</a>
+</body>
+
+</html>

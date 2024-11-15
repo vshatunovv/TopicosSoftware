@@ -1,0 +1,31 @@
+{% extends 'lista_productos.html' %}
+
+{% block content %}
+<h1>Productos con precios convertidos</h1>
+
+{% if error %}
+<p style="color: red;">{{ error }}</p>
+{% else %}
+<p>Tasa de cambio actual (1 USD a {{ moneda_destino }}): {{ tasa_cambio }}</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Precio Original (USD)</th>
+            <th>Precio Convertido ({{ moneda_destino }})</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.name }}</td>
+            <td>{{ producto.price }}</td>
+            <td>{{ producto.precio_convertido }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+
+{% endblock %}

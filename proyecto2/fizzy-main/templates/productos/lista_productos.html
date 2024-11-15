@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lista de Productos</title>
+</head>
+
+<body>
+    <h1>Lista de Productos</h1>
+
+    <!-- Verifica si se pasó una tasa de cambio -->
+    {% if tasa_cambio and moneda_destino %}
+    <p>
+        Tasa de cambio: 1 USD = {{ tasa_cambio }} {{ moneda_destino }}
+    </p>
+    {% endif %}
+
+    <ul>
+        <!-- Iteramos sobre la lista de productos -->
+        {% for producto in productos %}
+        <li>
+            <strong>{{ producto.name }}</strong><br>
+            Descripción: {{ producto.description }}<br>
+            Precio Original: ${{ producto.price }}<br>
+            <!-- Verifica si el precio convertido está disponible -->
+            {% if producto.precio_convertido %}
+            Precio Convertido: {{ producto.precio_convertido }} {{ moneda_destino }}<br>
+            {% endif %}
+            <a href="{% url 'detalle_producto' producto.pk %}">Ver detalles</a>
+        </li>
+        {% empty %}
+        <li>No hay productos disponibles.</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
